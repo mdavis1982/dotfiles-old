@@ -16,4 +16,4 @@ BASE_DIRECTORY="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 source $BASE_DIRECTORY/dnsmasq/install.sh
 source $BASE_DIRECTORY/vim/install.sh
 source $BASE_DIRECTORY/git/install.sh
-
+source $BASE_DIRECTORY/wget/install.sh
