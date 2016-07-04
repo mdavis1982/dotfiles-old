@@ -26,7 +26,7 @@ if [ -e ~/.vimrc ] || [ -e ~/.gvimrc ] || [ -d ~/.vim ]; then
             rm ~/.gvimrc
             printf "Done\n"
             printf "Removing ~/.vim... "
-            rm -r ~/.vim
+            rm -fr ~/.vim
             printf "Done\n"
             ;;
         *)

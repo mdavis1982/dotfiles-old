@@ -11,13 +11,18 @@ set noswapfile                                      " Turn off swap files
 "----- Editing -----
 syntax enable                                       " Enable syntax highlighting
 set number                                          " Turn on line numbers
+set relativenumber                                  " Turn on relative line numbers
 set backspace=indent,eol,start                      " Make backspace behave like normal
+set softtabstop=4                                   " Make backspace delete spaces as though they are tabs
 set tabstop=4                                       " Show existing tabs with 4 spaces
 set shiftwidth=4                                    " When indenting use 4 spaces
 set expandtab                                       " On pressing tab, insert 4 spaces
 
 set hidden                                          " Hide buffers instead of closing them
 set nofoldenable                                    " Don't fold anything
+
+set showcmd                                         " Show incomplete commands at the bottom
+set showmode                                        " Show current mode at the bottom
 
 "----- Visuals -----
 colorscheme atom-dark-256                           " Set color scheme
@@ -28,7 +33,6 @@ set hlsearch							            " Turn on search highlighting
 set incsearch							            " Turn on incremental searching
 set ignorecase                                      " Ignore case when searching
 set smartcase                                       " Ignore case if all lowercase, otherwise don't
-
 
 
 "----- Split Management -----
@@ -129,6 +133,27 @@ autocmd FileType php noremap <Leader>n :call PhpInsertUse()<cr>
 autocmd FileType php inoremap <Leader>nf <Esc>:call IPhpExpandClass()<cr>
 autocmd FileType php noremap <Leader>nf :call PhpExpandClass()<cr>
 
+"/
+"/ Easy Align
+"/
+"-- Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap <Leader>a <Plug>(EasyAlign)
+
+"-- Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap <Leader>a <Plug>(EasyAlign)
+
+"/
+"/ Syntastic
+"/
+let syntastic_stl_format = '[Syntax: %E{line:%fe }%W{#W:%w}%B{ }%E{#E:%e}]'
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+
+"----- Status Bar -----
+so ~/.vim/statusline.vim
 
 "----- Auto Commands -----
 "-- Auto source the ~/.vimrc file on saving
@@ -137,7 +162,6 @@ augroup autosourcing
     autocmd BufWritePost $MYVIMRC source %
     autocmd BufWritePost $MYVIMRC source ~/.gvimrc
 augroup END
-
 
 
 "----- Make Myself Learn Vim -----
