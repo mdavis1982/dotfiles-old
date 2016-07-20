@@ -22,13 +22,17 @@ fi
 # remove them
 # ------------------------------------------------------------------------------
 CONTINUE=true
-if [ -e ~/.oh-my-zsh/custom/paths.zsh ]; then
+if [ -e ~/.oh-my-zsh/custom/paths.zsh ] || [ -e ~/.oh-my-zsh/custom/themes/lick.zsh-theme ]; then
     printf "Some files would be overwritten installing Oh My ZSH! config. Continue? (y/N): "
     read -r RESPONSE
     case $RESPONSE in
         [yY])
             printf "Removing ~/.oh-my-zsh/custom/paths.zsh... "
             rm ~/.oh-my-zsh/custom/paths.zsh
+            printf "Done\n"
+
+            printf "Removing ~/.oh-my-zsh/custom/themes/lick.zsh-theme... "
+            rm ~/.oh-my-zsh/custom/themes/lick.zsh-theme
             printf "Done\n"
             ;;
         *)
@@ -45,6 +49,9 @@ fi
 # Copy configuration file
 # ------------------------------------------------------------------------------
 cp $DIRECTORY/custom/paths.zsh ~/.oh-my-zsh/custom/paths.zsh
+
+mkdir -p ~/.oh-my-zsh/custom/themes
+cp $DIRECTORY/custom/themes/lick.zsh-theme ~/.oh-my-zsh/custom/themes/lick.zsh-theme
 
 # Success message
 # ------------------------------------------------------------------------------
