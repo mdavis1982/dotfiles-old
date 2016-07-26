@@ -17,6 +17,7 @@ Plugin 'arnaud-lb/vim-php-namespace'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'junegunn/vim-easy-align'
 Plugin 'scrooloose/syntastic'
+Plugin 'sheerun/vim-polyglot'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
