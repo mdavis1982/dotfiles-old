@@ -26,6 +26,7 @@ set showmode                                        " Show current mode at the b
 
 "----- Visuals -----
 colorscheme atom-dark-256                           " Set color scheme
+set background=dark                                 " Always prefer a dark background
 
 
 "----- Searching -----
@@ -141,6 +142,9 @@ xmap <Leader>a <Plug>(EasyAlign)
 
 "-- Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap <Leader>a <Plug>(EasyAlign)
+
+"-- Align between [] on an =
+nmap <Leader>= vi[,a=
 
 "/
 "/ Syntastic
