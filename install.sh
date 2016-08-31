@@ -5,7 +5,7 @@
 printf "# ---------------------\n"
 printf "# dotfiles Installation\n"
 printf "# ---------------------\n\n"
-printf "This script will install dotfiles to set up or upgrade an OS X system.\n\n"
+printf "This script will install dotfiles to set up or upgrade a macOS system.\n\n"
 
 # Set the directory to the directory where the script is
 # ------------------------------------------------------------------------------
