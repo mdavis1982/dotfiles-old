@@ -15,11 +15,20 @@ snippet if
 snippet fk
 	$this->foreign('${1:/* column */}')->references('${2:id}')->on('${3:/* table */}')->onDelete('${4:cascade}');${5}
 snippet test
-	/**
-	 * @test
-	 */
-	public function it_${1}()
+	/** @test */
+	public function ${1:the_one_where}()
 	{
-		${2}
+		${2:// Test code}
+	}
+snippet testcase
+	<?php
+
+	use Illuminate\Foundation\Testing\WithoutMiddleware;
+	use Illuminate\Foundation\Testing\DatabaseMigrations;
+	use Illuminate\Foundation\Testing\DatabaseTransactions;
+
+	class {$1:TheNameOfThe}Test extends TestCase
+	{
+		{$2:// Test Case Code}
 	}
 
