@@ -33,4 +33,4 @@ PROMPT="
 %{$fg[white]%}in \
 %{$fg[green]%}${current_dir} \
 ${git_info}
-%{$terminfo[bold]$fg[red]%}→ %{$reset_color%}"
+%{$fg[red]%}→ %{$reset_color%}"
