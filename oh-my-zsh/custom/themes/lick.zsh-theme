@@ -13,7 +13,7 @@ local current_dir='${PWD/#$HOME/~}'
 
 # VCS
 VCS_PROMPT_PREFIX1="%{$fg[white]%}on%{$reset_color%} "
-VCS_PROMPT_PREFIX2=":%{$fg[blue]%}"
+VCS_PROMPT_PREFIX2=":%{$fg[cyan]%}"
 VCS_PROMPT_SUFFIX="%{$reset_color%}"
 VCS_PROMPT_DIRTY=" %{$fg[red]%}✖︎"
 VCS_PROMPT_CLEAN=" %{$fg[green]%}●"
