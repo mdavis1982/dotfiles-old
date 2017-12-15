@@ -48,7 +48,7 @@ fi
 # ------------------------------------------------------------------------------
 cp /usr/local/opt/dnsmasq/dnsmasq.conf.example /usr/local/etc/dnsmasq.conf
 
-# Insert config line to bottom of dnsmasq.conf 
+# Insert config line to bottom of dnsmasq.conf
 # ------------------------------------------------------------------------------
 echo "conf-file=$DIRECTORY/dnsmasq.conf" >> /usr/local/etc/dnsmasq.conf
 
@@ -59,14 +59,14 @@ if ! [ -d /etc/resolver ]; then
     sudo mkdir /etc/resolver
 fi
 
-if [ -e /etc/resolver/dev ]; then
+if [ -e /etc/resolver/test ]; then
     printf "Domain resolver already exists... Removing (requires password)\n"
-    sudo rm /etc/resolver/dev
+    sudo rm /etc/resolver/test
 fi
 
 printf "Creating domain resolver (requires password)\n"
-sudo touch /etc/resolver/dev
-echo "nameserver 127.0.0.1" | sudo tee -a /etc/resolver/dev > /dev/null
+sudo touch /etc/resolver/test
+echo "nameserver 127.0.0.1" | sudo tee -a /etc/resolver/test > /dev/null
 
 # Restart dnsmasq
 # ------------------------------------------------------------------------------
