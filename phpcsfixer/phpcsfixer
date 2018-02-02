@@ -17,7 +17,7 @@ return PhpCsFixer\Config::create()
         'no_useless_return' => true,
         'no_whitespace_before_comma_in_array' => true,
         'not_operator_with_successor_space' => true,
-        'orderd_imports' => ['sortAlgorithm' => 'length'],
+        'ordered_imports' => ['sortAlgorithm' => 'length'],
         'return_type_declaration' => ['space_before' => 'none'],
         'short_scalar_cast' => true,
         'single_blank_line_before_namespace' => true,
