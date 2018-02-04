@@ -63,7 +63,7 @@ fi
 cp $DIRECTORY/custom/paths.zsh ~/.oh-my-zsh/custom/paths.zsh
 cp $DIRECTORY/custom/laravel.zsh ~/.oh-my-zsh/custom/laravel.zsh
 cp $DIRECTORY/custom/lscolors.zsh ~/.oh-my-zsh/custom/lscolors.zsh
-cp $DIRECTORY/custom/lscolors.zsh ~/.oh-my-zsh/custom/git.zsh
+cp $DIRECTORY/custom/git.zsh ~/.oh-my-zsh/custom/git.zsh
 
 mkdir -p ~/.oh-my-zsh/custom/themes
 cp $DIRECTORY/custom/themes/lick.zsh-theme ~/.oh-my-zsh/custom/themes/lick.zsh-theme
