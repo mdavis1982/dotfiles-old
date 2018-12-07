@@ -22,7 +22,7 @@ fi
 # remove them
 # ------------------------------------------------------------------------------
 CONTINUE=true
-if [ -e ~/.oh-my-zsh/custom/paths.zsh ] || [ -e ~/.oh-my-zsh/custom/laravel.zsh ] || [ -e ~/.oh-my-zsh/custom/lscolors.zsh ] || [ -e ~/.oh-my-zsh/custom/themes/lick.zsh-theme ]; then
+if [ -e ~/.oh-my-zsh/custom/paths.zsh ] || [ -e ~/.oh-my-zsh/custom/laravel.zsh ] || [ -e ~/.oh-my-zsh/custom/lscolors.zsh ] || [ -e ~/.oh-my-zsh/custom/themes/lick.zsh-theme ] || [ -e ~/.oh-my-zsh/custom/php.zsh ]; then
     printf "Some files would be overwritten installing Oh My ZSH! config. Continue? (y/N): "
     read -r RESPONSE
     case $RESPONSE in
@@ -46,6 +46,10 @@ if [ -e ~/.oh-my-zsh/custom/paths.zsh ] || [ -e ~/.oh-my-zsh/custom/laravel.zsh 
             printf "Removing ~/.oh-my-zsh/custom/themes/lick.zsh-theme... "
             rm ~/.oh-my-zsh/custom/themes/lick.zsh-theme
             printf "Done\n"
+
+            printf "Removing ~/.oh-my-zsh/custom/php.zsh... "
+            rm ~/.oh-my-zsh/custom/php.zsh
+            printf "Done\n"
             ;;
         *)
             CONTINUE=false
@@ -64,6 +68,7 @@ cp $DIRECTORY/custom/paths.zsh ~/.oh-my-zsh/custom/paths.zsh
 cp $DIRECTORY/custom/laravel.zsh ~/.oh-my-zsh/custom/laravel.zsh
 cp $DIRECTORY/custom/lscolors.zsh ~/.oh-my-zsh/custom/lscolors.zsh
 cp $DIRECTORY/custom/git.zsh ~/.oh-my-zsh/custom/git.zsh
+cp $DIRECTORY/custom/php.zsh ~/.oh-my-zsh/custom/php.zsh
 
 mkdir -p ~/.oh-my-zsh/custom/themes
 cp $DIRECTORY/custom/themes/lick.zsh-theme ~/.oh-my-zsh/custom/themes/lick.zsh-theme
