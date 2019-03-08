@@ -1,0 +1,55 @@
+#!/usr/bin/env bash
+
+# Remove unnecessary asset dependencies
+echo "${green}Removing unnecessary asset dependencies...${reset}"
+php artisan preset none
+php artisan preset vue
+git add .
+git commit -m "Remove unnecessary asset dependencies"
+
+# Copy standard files to new lambo project
+echo "${green}Copying include files...${reset}"
+cp -R ~/.lambo/includes/ $PROJECTPATH
+git add .
+git commit -m "Copy standard files to project"
+
+# Update App Name in .env file
+echo "${green}Updating APP_NAME in .env...${reset}"
+perl -pi -e "s/(APP_NAME=)(.*)/\1\"$PROJECTNAME\"/g" ".env"
+
+# Move User to Models directory
+echo "${green}Moving User model to Models directory...${reset}"
+mv $PROJECTPATH/app/User.php $PROJECTPATH/app/Models/
+sed -i "" -e 's/namespace App;/namespace App\\Models;/' $PROJECTPATH/app/Models/User.php
+sed -i "" -e 's/use App\\User;/use App\\Models\\User;/' $PROJECTPATH/app/Http/Controllers/Auth/RegisterController.php $PROJECTPATH/database/factories/UserFactory.php
+sed -i "" -e 's/App\\User::class/App\\Models\\User::class/' $PROJECTPATH/config/auth.php $PROJECTPATH/config/services.php
+git add .
+git commit -m "Move models to their own directory"
+
+# Set up PHPUnit
+echo "${green}Setting up PHPUnit...${reset}"
+awk -v pattern="SESSION_DRIVER" -v line="        <server name=\"DB_CONNECTION\" value=\"sqlite\"/>" '$0 ~ pattern {print; print line; next} 1' phpunit.xml | tee 1>/dev/null phpunit.xml
+awk -v pattern="DB_CONNECTION" -v line="        <server name=\"DB_DATABASE\" value=\":memory:\"/>" '$0 ~ pattern {print; print line; next} 1' phpunit.xml | tee 1>/dev/null phpunit.xml
+git add .
+git commit -m "Set up PHPUnit"
+
+# Install npm dependencies
+echo "${green}Installing npm dependencies...${reset}"
+npm install
+npm install --save-dev tailwindcss laravel-mix-tailwind laravel-mix-purgecss vue-template-compiler
+git add .
+git commit -m "Install npm dependencies"
+
+# Add Tailwind CSS config file
+echo "${green}Adding Tailwind CSS config file...${reset}"
+$PROJECTPATH/node_modules/.bin/tailwind init
+git add .
+git commit -m "Add Tailwind CSS configuration file"
+
+# Compile assets
+echo "${green}Compiling assets...${reset}"
+npm run dev
+git add .
+git commit -m "Compile assets"
+
+echo "${green}DONE!${reset}"

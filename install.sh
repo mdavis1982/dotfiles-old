@@ -18,3 +18,4 @@ source $BASE_DIRECTORY/vim/install.sh
 source $BASE_DIRECTORY/git/install.sh
 source $BASE_DIRECTORY/wget/install.sh
 source $BASE_DIRECTORY/phpcsfixer/install.sh
+source $BASE_DIRECTORY/lambo/install.sh
