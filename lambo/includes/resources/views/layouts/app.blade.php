@@ -5,7 +5,9 @@
 @endpush
 
 @push('scripts')
-    <script src="{{ mix('/js/manifest.js', 'assets/build') }}"></script>
-    <script src="{{ mix('/js/vendor.js', 'assets/build') }}"></script>
-    <script src="{{ mix('/js/app.js', 'assets/build') }}"></script>
+    <script src="{{ mix('/js/manifest.js') }}"></script>
+    <script src="{{ mix('/js/vendor.js') }}"></script>
+    <script src="{{ mix('/js/app.js') }}"></script>
 @endpush
+
+@section('body-classes', 'font-sans leading-normal antialiased')
