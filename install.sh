@@ -16,6 +16,5 @@ BASE_DIRECTORY="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 source $BASE_DIRECTORY/oh-my-zsh/install.sh
 source $BASE_DIRECTORY/vim/install.sh
 source $BASE_DIRECTORY/git/install.sh
-source $BASE_DIRECTORY/wget/install.sh
 source $BASE_DIRECTORY/phpcsfixer/install.sh
 source $BASE_DIRECTORY/lambo/install.sh

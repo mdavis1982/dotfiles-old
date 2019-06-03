@@ -41,4 +41,4 @@ rm ~/.lambo/install.sh
 
 # Success message
 # ------------------------------------------------------------------------------
-printf "\nLambo configurationsuccessfully installed\n\n"
+printf "\nLambo configuration successfully installed\n\n"
