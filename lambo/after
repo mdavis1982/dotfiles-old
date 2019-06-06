@@ -36,7 +36,7 @@ git commit -m "Set up PHPUnit"
 # Install npm dependencies
 echo "${green}Installing npm dependencies...${reset}"
 npm install
-npm install --save-dev tailwindcss laravel-mix-tailwind laravel-mix-purgecss vue-template-compiler
+npm install --save-dev tailwindcss laravel-mix-purgecss vue-template-compiler
 git add .
 git commit -m "Install npm dependencies"
 
