@@ -7,6 +7,10 @@ php artisan preset vue
 git add .
 git commit -m "Remove unnecessary asset dependencies"
 
+# Remove default SASS files
+echo "${green}Removing default SASS files...${reset}"
+rm -r $PROJECTPATH/resources/sass
+
 # Copy standard files to new lambo project
 echo "${green}Copying include files...${reset}"
 cp -R ~/.lambo/includes/ $PROJECTPATH
