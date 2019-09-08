@@ -1,12 +1,5 @@
 #!/usr/bin/env bash
 
-# Remove unnecessary asset dependencies
-echo "${green}Removing unnecessary asset dependencies...${reset}"
-php artisan preset none
-php artisan preset vue
-git add .
-git commit -m "Remove unnecessary asset dependencies"
-
 # Remove default SASS files
 echo "${green}Removing default SASS files...${reset}"
 rm -r $PROJECTPATH/resources/sass
@@ -26,7 +19,8 @@ echo "${green}Moving User model to Models directory...${reset}"
 mv $PROJECTPATH/app/User.php $PROJECTPATH/app/Models/
 sed -i "" -e 's/namespace App;/namespace App\\Models;/' $PROJECTPATH/app/Models/User.php
 sed -i "" -e 's/use App\\User;/use App\\Models\\User;/' $PROJECTPATH/app/Http/Controllers/Auth/RegisterController.php $PROJECTPATH/database/factories/UserFactory.php
-sed -i "" -e 's/App\\User::class/App\\Models\\User::class/' $PROJECTPATH/config/auth.php $PROJECTPATH/config/services.php
+sed -i "" -e 's/\\App\\User/\\App\\Models\\User/' $PROJECTPATH/app/Http/Controllers/Auth/RegisterController.php
+sed -i "" -e 's/App\\User::class/App\\Models\\User::class/' $PROJECTPATH/config/auth.php
 git add .
 git commit -m "Move models to their own directory"
 
@@ -40,7 +34,8 @@ git commit -m "Set up PHPUnit"
 # Install npm dependencies
 echo "${green}Installing npm dependencies...${reset}"
 npm install
-npm install --save-dev tailwindcss laravel-mix-purgecss vue-template-compiler
+npm uninstall lodash resolve-url-loader sass sass-loader
+npm install --save-dev laravel-mix-purgecss tailwindcss vue vue-template-compiler
 git add .
 git commit -m "Install npm dependencies"
 

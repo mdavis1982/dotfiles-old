@@ -9,20 +9,16 @@
 
         <title>@yield('title', config('app.name'))</title>
 
-        @stack('meta')
-        @stack('stylesheets')
-        @stack('head-scripts')
+        <link href="{{ mix('/css/app.css') }}" rel="stylesheet">
     </head>
 
-    <body @hasSection('body-classes')class="@yield('body-classes')"@endif>
-        <div id="app">
-            @stack('pre-content')
+    <body class="font-sans leading-normal antialiased">
+        <main id="app">
             @yield('content')
-            @stack('post-content')
-        </div>
+        </main>
 
-        @stack('pre-scripts')
-        @stack('scripts')
-        @stack('post-scripts')
+        <script src="{{ mix('/js/manifest.js') }}"></script>
+        <script src="{{ mix('/js/vendor.js') }}"></script>
+        <script src="{{ mix('/js/app.js') }}"></script>
     </body>
 </html>
