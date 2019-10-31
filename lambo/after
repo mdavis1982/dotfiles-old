@@ -10,6 +10,18 @@ cp -R ~/.lambo/includes/ $PROJECTPATH
 git add .
 git commit -m "Copy standard files to project"
 
+# Set up auth
+echo "${green}Setting up auth...${reset}"
+echo "${orange}Setting up routes...${reset}"
+awk -v pattern="Route::get" -v line="Auth::routes();\n" '$0 ~ pattern {print line; print; next} 1' $PROJECTPATH/routes/web.php | tee 1>/dev/null $PROJECTPATH/routes/web.php
+awk -v pattern="Auth::routes" -v line="\nRoute::prefix('admin')\n    ->name('admin.')\n    ->namespace('Admin')\n    ->middleware('auth')\n    ->group(function() {\n        Route::get('dashboard', 'DashboardController@index')->name('dashboard');\n    });" '$0 ~ pattern {print; print line; next} 1' $PROJECTPATH/routes/web.php | tee 1>/dev/null $PROJECTPATH/routes/web.php
+
+echo "${orange}Patching middleware...${reset}"
+sed -i "" -e "s#redirect('/home')#redirect()->route('admin.dashboard')#" $PROJECTPATH/app/Http/Middleware/RedirectIfAuthenticated.php
+
+git add .
+git commit -m "Set up auth"
+
 # Update App Name in .env file
 echo "${green}Updating APP_NAME in .env...${reset}"
 perl -pi -e "s/(APP_NAME=)(.*)/\1\"$PROJECTNAME\"/g" ".env"
@@ -26,8 +38,8 @@ git commit -m "Move models to their own directory"
 
 # Set up PHPUnit
 echo "${green}Setting up PHPUnit...${reset}"
-awk -v pattern="SESSION_DRIVER" -v line="        <server name=\"DB_CONNECTION\" value=\"sqlite\"/>" '$0 ~ pattern {print; print line; next} 1' phpunit.xml | tee 1>/dev/null phpunit.xml
-awk -v pattern="DB_CONNECTION" -v line="        <server name=\"DB_DATABASE\" value=\":memory:\"/>" '$0 ~ pattern {print; print line; next} 1' phpunit.xml | tee 1>/dev/null phpunit.xml
+awk -v pattern="SESSION_DRIVER" -v line="        <server name=\"DB_CONNECTION\" value=\"sqlite\"/>" '$0 ~ pattern {print; print line; next} 1' $PROJECTPATH/phpunit.xml | tee 1>/dev/null $PROJECTPATH/phpunit.xml
+awk -v pattern="DB_CONNECTION" -v line="        <server name=\"DB_DATABASE\" value=\":memory:\"/>" '$0 ~ pattern {print; print line; next} 1' $PROJECTPATH/phpunit.xml | tee 1>/dev/null $PROJECTPATH/phpunit.xml
 git add .
 git commit -m "Set up PHPUnit"
 
