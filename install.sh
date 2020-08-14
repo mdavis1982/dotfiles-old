@@ -14,7 +14,8 @@ BASE_DIRECTORY="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 # Install each section in turn
 # ------------------------------------------------------------------------------
 source $BASE_DIRECTORY/oh-my-zsh/install.sh
-source $BASE_DIRECTORY/vim/install.sh
+# Disabling VIM for now
+# source $BASE_DIRECTORY/vim/install.sh
 source $BASE_DIRECTORY/git/install.sh
 source $BASE_DIRECTORY/phpcsfixer/install.sh
 source $BASE_DIRECTORY/lambo/install.sh

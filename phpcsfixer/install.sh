@@ -14,13 +14,13 @@ DIRECTORY="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 # remove them
 # ------------------------------------------------------------------------------
 CONTINUE=true
-if [ -e ~/.phpcsfixer ]; then
+if [ -e ~/.php_cs ]; then
     printf "Some files would be overwritten installing PHPCSFixer config. Continue? (y/N): "
     read -r RESPONSE
     case $RESPONSE in
         [yY])
-            printf "Removing ~/.phpcsfixer... "
-            rm ~/.phpcsfixer
+            printf "Removing ~/.php_cs... "
+            rm ~/.php_cs
             printf "Done\n"
             ;;
         *)
@@ -36,9 +36,8 @@ fi
 
 # Copy the required files
 # ------------------------------------------------------------------------------
-cp $DIRECTORY/phpcsfixer ~/.phpcsfixer
+cp $DIRECTORY/php_cs ~/.php_cs
 
 # Success message
 # ------------------------------------------------------------------------------
-printf "\nPHPCSFixer config installed\n\n"
-
+printf "\nPHP CS Fixer config installed\n\n"
